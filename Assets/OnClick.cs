@@ -15,19 +15,17 @@ public class OnClick : MonoBehaviour
         if (image.sprite == greenSprite) 
         {
             arduinoButon.sliderGameObect.SetActive(true);
-            //arduinoButon.energySlider.fillRect.GetComponent<Image>().enabled=false;
-            //arduinoButon.energySlider.value = 0;
-            //arduinoButon.energySlider.SetValueWithoutNotify(arduinoButon.energyPercentage);
             arduinoButon.isTimerRunning = false;
             image.sprite = redSprite;
             text.text = "Stop";
             arduinoButon.OpenSerialPort();
             ArduinoButon.cumulativeEnergy = 0;
+            //arduinoButon.timerText.text = ArduinoButon.timeText;
         }
         else
         {
-            arduinoButon.energySlider.value = 0;
-            arduinoButon.energySlider.SetValueWithoutNotify(0);
+            //arduinoButon.energySlider.value = 0;
+            //arduinoButon.energySlider.SetValueWithoutNotify(0);
             arduinoButon.isTimerRunning = false;
             image.sprite= greenSprite;
             text.text = "Start";

@@ -13,6 +13,7 @@ public class ArduinoButon : MonoBehaviour
     public TextMeshProUGUI energyText;
     string powerString;
     public Image image;
+    public TextMeshProUGUI titleText;
     public Sprite redSprite;
     public Slider energySlider;
     public GameObject sliderGameObect;
@@ -22,13 +23,18 @@ public class ArduinoButon : MonoBehaviour
     private SerialPort serialPort;
     private float elapsedTime;
     public bool isTimerRunning = false;
-    private float startTime;
+    private float startTimeChrono;
+    private float startTimeAction;
     List<int> powerList = new List<int>();
-
+    public int maxEnergy;
+    public static string timeText;
+    public TextMeshProUGUI winorfailText;
+    public int score;
     public static float cumulativeEnergy = 0f;
 
     void Start()
     {
+        winorfailText.enabled = false;
         sliderGameObect.SetActive(false);
         startButton.onClick.AddListener(StartTimer);
         OpenSerialPort();
@@ -44,9 +50,9 @@ public class ArduinoButon : MonoBehaviour
                 Debug.Log("Connexion détruite, arrêt du chronomètre.");
                 return;
             }
-            elapsedTime = Time.time - startTime;
+            elapsedTime = Time.time - startTimeChrono;
             TimeSpan timeSpan = TimeSpan.FromSeconds(elapsedTime);
-            string timeText = string.Format("{0:00}:{1:00}", timeSpan.Minutes, timeSpan.Seconds);
+            timeText = string.Format("{0:00}:{1:00}", timeSpan.Minutes, timeSpan.Seconds);
             timerText.text = timeText;
 
             // Get the power value sent by Arduino
@@ -69,22 +75,24 @@ public class ArduinoButon : MonoBehaviour
 
     public void DestroyConnection()
     {
-        float neededEnergy = float.Parse(energyText.text);
         CloseSerialPort();
+        
         if (powerList.Count > 0)
         {
-            float averagePower = powerList.Sum() / (float)powerList.Count;
-            float producedEnergy = averagePower * elapsedTime / 3600;
-            Debug.Log("Port closed, " + averagePower + "Kw, " + elapsedTime + "s");
-            Debug.Log(producedEnergy + "Kwh");
-            if (producedEnergy >= neededEnergy)
+            //float averagePower = powerList.Sum() / (float)powerList.Count;
+            //float producedEnergy = averagePower * elapsedTime / 3600;
+            
+            if (energySlider.value >= 1 && elapsedTime < time)
             {
-                Debug.Log("Energie completed");
+                winorfailText.text = "You've Win !";
+                score = 15;
             }
             else
             {
-                Debug.Log("Energy not completed");
+                winorfailText.text = "Failed !";
+                
             }
+            winorfailText.enabled = true;
             powerList.Clear();
         }
     }
@@ -109,21 +117,43 @@ public class ArduinoButon : MonoBehaviour
     void StartTimer()
     {
         isTimerRunning = true;
-        startTime = Time.time;
+        startTimeChrono = Time.time;
+        startTimeAction = Time.time;
     }
 
     void UpdateEnergy()
     {
-        float deltaTime = Time.time - startTime;
-        startTime = Time.time;
+        float deltaTime = Time.time - startTimeAction;
+        startTimeAction = Time.time;
         cumulativeEnergy += power * deltaTime / 3600f; // Update cumulative energy
     }
 
     public static float energyPercentage;
+    int time = 0;
 
     void UpdateEnergySlider()
     {
-        float maxEnergy = 1f; // Define the maximum energy value according to your game
+        if (titleText.text == "Cofee")
+        {
+            maxEnergy = 5;
+            time = 60;
+        }
+        else if (titleText.text == "Dishes (1 cycle)")
+        {
+            maxEnergy = 920;
+            time = 3600;
+        }
+        else if (titleText.text == "Cooking")
+        {
+            maxEnergy = 100;
+            time = 300;
+        }
+        else if (titleText.text == "Washing (1 cycle)")
+        {
+            maxEnergy = 900;
+            time = 5400;
+        }
+
         energyPercentage = cumulativeEnergy / maxEnergy;
 
         // Update the progress bar value
