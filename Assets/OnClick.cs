@@ -9,29 +9,35 @@ public class OnClick : MonoBehaviour
     public Sprite redSprite;
     public Image image;
     public ArduinoButon arduinoButon;
+    public Button startButton;
 
     public void GreenClick()
     {
-        if (image.sprite == greenSprite) 
+        /*if (image.sprite == greenSprite)
         {
             arduinoButon.sliderGameObect.SetActive(true);
             arduinoButon.isTimerRunning = false;
-            image.sprite = redSprite;
-            text.text = "Stop";
+            startButton.enabled = false;
+            //image.sprite = redSprite;
+            //text.text = "Stop";
             arduinoButon.OpenSerialPort();
             ArduinoButon.cumulativeEnergy = 0;
-            //arduinoButon.timerText.text = ArduinoButon.timeText;
+
+            // Enable pause and stop buttons
+            arduinoButon.pauseImage.enabled = false;
+            arduinoButon.stopButton.gameObject.SetActive(true);
+
+            // Disable start button
+            arduinoButon.startButton.gameObject.SetActive(false);
         }
-        else
+        /*else
         {
-            //arduinoButon.energySlider.value = 0;
-            //arduinoButon.energySlider.SetValueWithoutNotify(0);
             arduinoButon.isTimerRunning = false;
-            image.sprite= greenSprite;
+            image.sprite = greenSprite;
             text.text = "Start";
             image.enabled = false;
             text.enabled = false;
             arduinoButon.DestroyConnection();
-        }
+        }*/
     }
 }

@@ -9,6 +9,8 @@ using System.Linq;
 public class ArduinoButon : MonoBehaviour
 {
     public Button startButton;
+    public Button pauseButton;
+    public Button stopButton;
     public TextMeshProUGUI timerText;
     public TextMeshProUGUI energyText;
     string powerString;
@@ -31,14 +33,35 @@ public class ArduinoButon : MonoBehaviour
     public TextMeshProUGUI winorfailText;
     public int score;
     public static float cumulativeEnergy = 0f;
+    public Image pauseImage;
+    public Image stopImage;
+    public Image startImage;
+    public TextMeshProUGUI startText;
+    public TextMeshProUGUI pauseText;
+    public TextMeshProUGUI stopText;
+    private int pauseCount = 0;
+    private float pauseDuration = 0;
+    private int maxPauses = 0;
+    private float maxPauseDuration = 0;
+    private float startTimePause;
+    private float endTimePause;
 
     void Start()
     {
         winorfailText.enabled = false;
         sliderGameObect.SetActive(false);
         startButton.onClick.AddListener(StartTimer);
+        pauseButton.onClick.AddListener(PauseTimer);
+        stopButton.onClick.AddListener(StopTimer);
         OpenSerialPort();
-    }
+
+        // Initially disable pause and stop buttons
+        pauseImage.enabled = false;
+        stopImage.enabled = false;
+        pauseText.enabled=false;
+        stopText.enabled = false;
+
+}
 
     void Update()
     {
@@ -46,7 +69,7 @@ public class ArduinoButon : MonoBehaviour
         {
             if (!serialPort.IsOpen)
             {
-                isTimerRunning = false; // Stop the timer
+                isTimerRunning = false;
                 Debug.Log("Connexion détruite, arrêt du chronomètre.");
                 return;
             }
@@ -55,7 +78,6 @@ public class ArduinoButon : MonoBehaviour
             timeText = string.Format("{0:00}:{1:00}", timeSpan.Minutes, timeSpan.Seconds);
             timerText.text = timeText;
 
-            // Get the power value sent by Arduino
             if (serialPort != null && serialPort.IsOpen && serialPort.BytesToRead > 0)
             {
                 string data = serialPort.ReadLine();
@@ -76,21 +98,17 @@ public class ArduinoButon : MonoBehaviour
     public void DestroyConnection()
     {
         CloseSerialPort();
-        
+
         if (powerList.Count > 0)
         {
-            //float averagePower = powerList.Sum() / (float)powerList.Count;
-            //float producedEnergy = averagePower * elapsedTime / 3600;
-            
             if (energySlider.value >= 1 && elapsedTime < time)
             {
-                winorfailText.text = "You've Win !";
+                winorfailText.text = "You've Win!";
                 score = 15;
             }
             else
             {
-                winorfailText.text = "Failed !";
-                
+                winorfailText.text = "Failed!";
             }
             winorfailText.enabled = true;
             powerList.Clear();
@@ -99,8 +117,8 @@ public class ArduinoButon : MonoBehaviour
 
     public void OpenSerialPort()
     {
-        string portName = "COM3"; // Specify the correct COM port used by your Arduino
-        int baudRate = 9600; // Same baud rate as specified in your Arduino code
+        string portName = "COM3";
+        int baudRate = 9600;
 
         serialPort = new SerialPort(portName, baudRate);
         serialPort.Open();
@@ -119,13 +137,79 @@ public class ArduinoButon : MonoBehaviour
         isTimerRunning = true;
         startTimeChrono = Time.time;
         startTimeAction = Time.time;
+        OpenSerialPort();
+        sliderGameObect.SetActive(true);
+        cumulativeEnergy = 0;
+        pauseImage.enabled = true;
+        stopImage.enabled = true;
+        pauseText.enabled = true;
+        stopText.enabled = true;
+        pauseButton.interactable = true;
+        pauseCount = 0;
+
+        // Disable start button
+        startImage.enabled = false;
+        startText.enabled = false;
+        //startButton.GetComponentInChildren<TextMeshProUGUI>().text = "";
+    }
+
+    void PauseTimer()
+    {
+        if (isTimerRunning)
+        {
+            float startTimePause = Time.time;
+            if (pauseCount < maxPauses )
+            {
+                isTimerRunning = false;
+                pauseText.text = "Reset";
+                pauseCount++;
+                //pauseDuration += Time.time - startTimeAction;
+            }
+            else
+            {
+                // Disable pause button when max pauses or duration is reached
+                pauseButton.interactable = false;
+            }
+        }
+        else
+        {
+            float endTimePause =Time.time;
+            pauseDuration = endTimePause - startTimePause;          
+            TimeSpan timeSpan = TimeSpan.FromSeconds(pauseDuration);
+            float total = (float)timeSpan.TotalSeconds;
+            //Debug.Log(total);
+            if (total < maxPauseDuration)
+            {
+                isTimerRunning = true;
+                startTimeChrono = Time.time - elapsedTime;
+                startTimeAction = Time.time;
+                pauseText.text = "Pause";
+            }
+        }
+        pauseImage.enabled = true;
+    }
+
+    void StopTimer()
+    {
+        isTimerRunning = false;
+        DestroyConnection();
+
+        // Disable pause and stop buttons
+        pauseImage.enabled = false;
+        stopImage.enabled = false;
+        pauseText.enabled = false;
+        stopText.enabled=false;    
     }
 
     void UpdateEnergy()
     {
-        float deltaTime = Time.time - startTimeAction;
-        startTimeAction = Time.time;
-        cumulativeEnergy += power * deltaTime / 3600f; // Update cumulative energy
+        if (isTimerRunning)
+        {
+            float deltaTime = Time.time - startTimeAction;
+            startTimeAction = Time.time;
+            cumulativeEnergy += power * deltaTime / 3600f;
+        }
+       
     }
 
     public static float energyPercentage;
@@ -137,26 +221,33 @@ public class ArduinoButon : MonoBehaviour
         {
             maxEnergy = 5;
             time = 60;
+            maxPauses = 1;
+            maxPauseDuration = 40f;
         }
         else if (titleText.text == "Dishes (1 cycle)")
         {
             maxEnergy = 920;
             time = 3600;
+            maxPauses = 10;
+            maxPauseDuration = 60f;
         }
         else if (titleText.text == "Cooking")
         {
             maxEnergy = 100;
             time = 300;
+            maxPauses = 5;
+            maxPauseDuration = 4f;
         }
         else if (titleText.text == "Washing (1 cycle)")
         {
             maxEnergy = 900;
             time = 5400;
+            maxPauses = 10;
+            maxPauseDuration = 50f;
         }
 
         energyPercentage = cumulativeEnergy / maxEnergy;
 
-        // Update the progress bar value
         energySlider.SetValueWithoutNotify(energyPercentage);
         percentageText.text = Mathf.RoundToInt(energySlider.value * 100) + "%";
     }
