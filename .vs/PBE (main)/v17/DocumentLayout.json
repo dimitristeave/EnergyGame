@@ -3,24 +3,27 @@
   "WorkspaceRootPath": "C:\\Users\\admin\\PBE (main)\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|C:\\Users\\admin\\PBE (main)\\assets\\arduinobuton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|c:\\users\\admin\\pbe (main)\\assets\\arduinobuton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|solutionrelative:assets\\arduinobuton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|c:\\users\\admin\\pbe (main)\\assets\\showfeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\admin\\AppData\\LocalLow\\DefaultCompany\\PBE (main)\\base.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|C:\\Users\\admin\\PBE (main)\\assets\\showfeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|solutionrelative:assets\\showfeatures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|C:\\Users\\admin\\PBE (main)\\assets\\onclick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|solutionrelative:assets\\onclick.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|C:\\Users\\admin\\PBE (main)\\assets\\gamemanagerdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|solutionrelative:assets\\gamemanagerdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|C:\\Users\\admin\\PBE (main)\\assets\\connexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|solutionrelative:assets\\connexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|C:\\Users\\admin\\PBE (main)\\assets\\loginmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|solutionrelative:assets\\loginmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0981AB9C-EFA2-AD64-ECA8-4820317B357E}|PhotonUnityNetworking.Demos.csproj|C:\\Users\\admin\\PBE (main)\\assets\\photon\\photonunitynetworking\\demos\\punbasics-tutorial\\scripts\\launcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0981AB9C-EFA2-AD64-ECA8-4820317B357E}|PhotonUnityNetworking.Demos.csproj|solutionrelative:assets\\photon\\photonunitynetworking\\demos\\punbasics-tutorial\\scripts\\launcher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|c:\\users\\admin\\pbe (main)\\assets\\playerleaderboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{59FF1C55-72EB-BE32-1265-D71B4D0FE62D}|Assembly-CSharp.csproj|solutionrelative:assets\\playerleaderboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +33,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,54 +41,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Connexion.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\PBE (main)\\Assets\\Connexion.cs",
-              "RelativeDocumentMoniker": "Assets\\Connexion.cs",
-              "ToolTip": "C:\\Users\\admin\\PBE (main)\\Assets\\Connexion.cs",
-              "RelativeToolTip": "Assets\\Connexion.cs",
-              "ViewState": "AQIAAGYAAAAAAAAAAAAgwHMAAAAAAAAA",
+              "DocumentIndex": 5,
+              "Title": "PlayerLeaderBoard.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\PBE (main)\\Assets\\PlayerLeaderBoard.cs",
+              "RelativeDocumentMoniker": "Assets\\PlayerLeaderBoard.cs",
+              "ToolTip": "C:\\Users\\admin\\PBE (main)\\Assets\\PlayerLeaderBoard.cs",
+              "RelativeToolTip": "Assets\\PlayerLeaderBoard.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T10:27:12.064Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Launcher.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\PBE (main)\\Assets\\Photon\\PhotonUnityNetworking\\Demos\\PunBasics-Tutorial\\Scripts\\Launcher.cs",
-              "RelativeDocumentMoniker": "Assets\\Photon\\PhotonUnityNetworking\\Demos\\PunBasics-Tutorial\\Scripts\\Launcher.cs",
-              "ToolTip": "C:\\Users\\admin\\PBE (main)\\Assets\\Photon\\PhotonUnityNetworking\\Demos\\PunBasics-Tutorial\\Scripts\\Launcher.cs",
-              "RelativeToolTip": "Assets\\Photon\\PhotonUnityNetworking\\Demos\\PunBasics-Tutorial\\Scripts\\Launcher.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAMwAAAAQAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-17T10:27:10.723Z",
+              "WhenOpened": "2024-06-16T17:49:26.861Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "base.json",
+              "DocumentMoniker": "C:\\Users\\admin\\AppData\\LocalLow\\DefaultCompany\\PBE (main)\\base.json",
+              "RelativeDocumentMoniker": "..\\AppData\\LocalLow\\DefaultCompany\\PBE (main)\\base.json",
+              "ToolTip": "C:\\Users\\admin\\AppData\\LocalLow\\DefaultCompany\\PBE (main)\\base.json",
+              "RelativeToolTip": "..\\AppData\\LocalLow\\DefaultCompany\\PBE (main)\\base.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-16T14:55:27.122Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LoginManager.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\PBE (main)\\Assets\\LoginManager.cs",
+              "RelativeDocumentMoniker": "Assets\\LoginManager.cs",
+              "ToolTip": "C:\\Users\\admin\\PBE (main)\\Assets\\LoginManager.cs",
+              "RelativeToolTip": "Assets\\LoginManager.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAA4AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-29T11:02:25.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "ShowFeatures.cs",
               "DocumentMoniker": "C:\\Users\\admin\\PBE (main)\\Assets\\ShowFeatures.cs",
               "RelativeDocumentMoniker": "Assets\\ShowFeatures.cs",
               "ToolTip": "C:\\Users\\admin\\PBE (main)\\Assets\\ShowFeatures.cs",
               "RelativeToolTip": "Assets\\ShowFeatures.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAcwCAAAAAxAAAA",
+              "ViewState": "AQIAABwAAAAAAAAAAAAQwCYAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T15:57:22.701Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "OnClick.cs",
-              "DocumentMoniker": "C:\\Users\\admin\\PBE (main)\\Assets\\OnClick.cs",
-              "RelativeDocumentMoniker": "Assets\\OnClick.cs",
-              "ToolTip": "C:\\Users\\admin\\PBE (main)\\Assets\\OnClick.cs",
-              "RelativeToolTip": "Assets\\OnClick.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAKAAAA",
+              "DocumentIndex": 3,
+              "Title": "GameManagerDb.cs",
+              "DocumentMoniker": "C:\\Users\\admin\\PBE (main)\\Assets\\GameManagerDb.cs",
+              "RelativeDocumentMoniker": "Assets\\GameManagerDb.cs",
+              "ToolTip": "C:\\Users\\admin\\PBE (main)\\Assets\\GameManagerDb.cs",
+              "RelativeToolTip": "Assets\\GameManagerDb.cs",
+              "ViewState": "AQIAADEAAAAAAAAAAAAAwDUAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-15T14:48:39.458Z",
+              "WhenOpened": "2024-05-29T11:40:09.573Z",
               "EditorCaption": ""
             },
             {
@@ -96,7 +112,7 @@
               "RelativeDocumentMoniker": "Assets\\ArduinoButon.cs",
               "ToolTip": "C:\\Users\\admin\\PBE (main)\\Assets\\ArduinoButon.cs",
               "RelativeToolTip": "Assets\\ArduinoButon.cs",
-              "ViewState": "AQIAAKQAAAAAAAAAAAAmwLoAAAANAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-15T15:27:02.073Z",
               "EditorCaption": ""

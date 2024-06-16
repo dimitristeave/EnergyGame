@@ -5,6 +5,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System.IO;
+using Photon.Pun.Demo.PunBasics;
 
 public class ArduinoButon : MonoBehaviour
 {
@@ -31,7 +33,7 @@ public class ArduinoButon : MonoBehaviour
     public int maxEnergy;
     public static string timeText;
     public TextMeshProUGUI winorfailText;
-    public int score;
+    public int score = 0;
     public static float cumulativeEnergy = 0f;
     public Image pauseImage;
     public Image stopImage;
@@ -43,8 +45,11 @@ public class ArduinoButon : MonoBehaviour
     private float pauseDuration = 0;
     private int maxPauses = 0;
     private float maxPauseDuration = 0;
+    private int pauseIndex;
     private float startTimePause;
-    private float endTimePause;
+    //private PlayerLeaderboard leaderboard;
+    GameManagerDb gameManagerDb;
+    ShowFeatures showFeatures;
 
     void Start()
     {
@@ -54,6 +59,7 @@ public class ArduinoButon : MonoBehaviour
         pauseButton.onClick.AddListener(PauseTimer);
         stopButton.onClick.AddListener(StopTimer);
         OpenSerialPort();
+        string playerName = PlayerPrefs.GetString("PlayerName", "default_player");
 
         // Initially disable pause and stop buttons
         pauseImage.enabled = false;
@@ -61,7 +67,12 @@ public class ArduinoButon : MonoBehaviour
         pauseText.enabled=false;
         stopText.enabled = false;
 
-}
+        gameManagerDb = FindObjectOfType<GameManagerDb>();
+        //leaderboard = FindObjectOfType<PlayerLeaderboard>();
+        //leaderboard.UpdateLeaderboard();
+
+        showFeatures = FindObjectOfType<ShowFeatures>();
+    }
 
     void Update()
     {
@@ -109,10 +120,13 @@ public class ArduinoButon : MonoBehaviour
             else
             {
                 winorfailText.text = "Failed!";
+                score = 0;
             }
             winorfailText.enabled = true;
             powerList.Clear();
         }
+        // Update player data in JSON
+        UpdatePlayerData();
     }
 
     public void OpenSerialPort()
@@ -137,6 +151,7 @@ public class ArduinoButon : MonoBehaviour
         isTimerRunning = true;
         startTimeChrono = Time.time;
         startTimeAction = Time.time;
+        startTimePause = Time.time;
         OpenSerialPort();
         sliderGameObect.SetActive(true);
         cumulativeEnergy = 0;
@@ -155,6 +170,7 @@ public class ArduinoButon : MonoBehaviour
 
     void PauseTimer()
     {
+        
         if (isTimerRunning)
         {
             float startTimePause = Time.time;
@@ -163,7 +179,8 @@ public class ArduinoButon : MonoBehaviour
                 isTimerRunning = false;
                 pauseText.text = "Reset";
                 pauseCount++;
-                //pauseDuration += Time.time - startTimeAction;
+                pauseIndex=maxPauses-pauseCount;
+                showFeatures.pauseText.text = pauseIndex.ToString();
             }
             else
             {
@@ -173,18 +190,19 @@ public class ArduinoButon : MonoBehaviour
         }
         else
         {
-            float endTimePause =Time.time;
+            float endTimePause = Time.time;
             pauseDuration = endTimePause - startTimePause;          
             TimeSpan timeSpan = TimeSpan.FromSeconds(pauseDuration);
             float total = (float)timeSpan.TotalSeconds;
             //Debug.Log(total);
-            if (total < maxPauseDuration)
+            if (total > maxPauseDuration)
             {
-                isTimerRunning = true;
-                startTimeChrono = Time.time - elapsedTime;
-                startTimeAction = Time.time;
-                pauseText.text = "Pause";
+                pauseCount++;
             }
+            isTimerRunning = true;
+            startTimeChrono = Time.time - elapsedTime;
+            startTimeAction = Time.time;
+            pauseText.text = "Pause";
         }
         pauseImage.enabled = true;
     }
@@ -197,6 +215,8 @@ public class ArduinoButon : MonoBehaviour
         // Disable pause and stop buttons
         pauseImage.enabled = false;
         stopImage.enabled = false;
+        pauseText.text = "Pause";
+        pauseButton.interactable = true;
         pauseText.enabled = false;
         stopText.enabled=false;    
     }
@@ -214,41 +234,71 @@ public class ArduinoButon : MonoBehaviour
 
     public static float energyPercentage;
     int time = 0;
+    
 
     void UpdateEnergySlider()
     {
         if (titleText.text == "Cofee")
         {
             maxEnergy = 5;
-            time = 60;
+            time = 6*60;
             maxPauses = 1;
             maxPauseDuration = 40f;
         }
         else if (titleText.text == "Dishes (1 cycle)")
         {
             maxEnergy = 920;
-            time = 3600;
+            time = 3*60*60;
             maxPauses = 10;
             maxPauseDuration = 60f;
         }
         else if (titleText.text == "Cooking")
         {
             maxEnergy = 100;
-            time = 300;
+            time = 1*60*60;
             maxPauses = 5;
-            maxPauseDuration = 4f;
+            maxPauseDuration = 40f;
         }
         else if (titleText.text == "Washing (1 cycle)")
         {
             maxEnergy = 900;
-            time = 5400;
+            time = 3*60*60;
             maxPauses = 10;
             maxPauseDuration = 50f;
         }
-
         energyPercentage = cumulativeEnergy / maxEnergy;
 
         energySlider.SetValueWithoutNotify(energyPercentage);
         percentageText.text = Mathf.RoundToInt(energySlider.value * 100) + "%";
     }
+
+    // Method to update player data in JSON
+    
+    void UpdatePlayerData()
+    {
+        string playerName = PlayerPrefs.GetString("PlayerName", "default_player");     
+        PlayerDatabase db = gameManagerDb.LoadPlayerDatabase();
+        Dictionary<string, PlayerInfo> players = db.ToDictionary();
+
+        if (!players.ContainsKey(playerName))
+        {
+            players[playerName] = new PlayerInfo { score_total = 0, energie_total = 0 };
+        }
+
+        players[playerName].score_total += score;
+        players[playerName].energie_total += cumulativeEnergy;
+
+        db.FromDictionary(players);
+        bool saveSuccess = gameManagerDb.SavePlayerDatabase(db);
+        if (saveSuccess)
+        {
+            Debug.Log("Player data updated and saved successfully");
+        }
+        else
+        {
+            Debug.LogError("Failed to update and save player data");
+        }
+    }
+
 }
+

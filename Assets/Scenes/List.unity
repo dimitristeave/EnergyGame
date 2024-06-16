@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 155657736}
   - component: {fileID: 155657735}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: score6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,6 +411,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155657733}
   m_CullTransparentMesh: 1
+--- !u!1 &260342724 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3996807930991544059, guid: cd534ade10c57d34cb6c296216714166, type: 3}
+  m_PrefabInstance: {fileID: 499726676}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &283227731
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +715,7 @@ GameObject:
   - component: {fileID: 395238630}
   - component: {fileID: 395238629}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: text2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -845,7 +850,7 @@ GameObject:
   - component: {fileID: 401257545}
   - component: {fileID: 401257544}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: score5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1506,6 +1511,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 380175343}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3996807930991544059, guid: cd534ade10c57d34cb6c296216714166, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 875872702}
+    - targetCorrespondingSourceObject: {fileID: 3996807930991544059, guid: cd534ade10c57d34cb6c296216714166, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 875872699}
     - targetCorrespondingSourceObject: {fileID: 6607798550314939861, guid: cd534ade10c57d34cb6c296216714166, type: 3}
       insertIndex: -1
       addedObject: {fileID: 499726681}
@@ -1637,7 +1648,7 @@ GameObject:
   - component: {fileID: 527138353}
   - component: {fileID: 527138352}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: text4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2202,6 +2213,44 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 825978655}
   m_CullTransparentMesh: 1
+--- !u!114 &875872699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260342724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1f234461c0c57d4e9ff3210e377834e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerNameTexts:
+  - {fileID: 1577699595}
+  - {fileID: 395238629}
+  - {fileID: 2114595199}
+  - {fileID: 527138352}
+  - {fileID: 1919927773}
+  - {fileID: 882896869}
+  playerScoreTexts:
+  - {fileID: 2050180777}
+  - {fileID: 1287950142}
+  - {fileID: 893096109}
+  - {fileID: 1437617201}
+  - {fileID: 401257544}
+  - {fileID: 155657735}
+--- !u!114 &875872702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 260342724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0feb4367c65631f458006b768c1349f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &882896867
 GameObject:
   m_ObjectHideFlags: 0
@@ -2214,7 +2263,7 @@ GameObject:
   - component: {fileID: 882896870}
   - component: {fileID: 882896869}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: text6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2349,7 +2398,7 @@ GameObject:
   - component: {fileID: 893096110}
   - component: {fileID: 893096109}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: score3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3121,7 +3170,7 @@ GameObject:
   - component: {fileID: 1287950143}
   - component: {fileID: 1287950142}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: score2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3411,7 +3460,7 @@ GameObject:
   - component: {fileID: 1437617202}
   - component: {fileID: 1437617201}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: score4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3701,7 +3750,7 @@ GameObject:
   - component: {fileID: 1577699596}
   - component: {fileID: 1577699595}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: text1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4282,7 +4331,7 @@ GameObject:
   - component: {fileID: 1919927774}
   - component: {fileID: 1919927773}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: text5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4628,7 +4677,7 @@ GameObject:
   - component: {fileID: 2050180778}
   - component: {fileID: 2050180777}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: score1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4839,7 +4888,7 @@ GameObject:
   - component: {fileID: 2114595200}
   - component: {fileID: 2114595199}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: text3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
